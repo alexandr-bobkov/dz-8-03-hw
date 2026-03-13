@@ -19,22 +19,55 @@
 
 Ответ:
 
+<img src = "img/1.jpg" width = 100%>
+<img src = "img/2.jpg" width = 100%>
 
 
 
 
+Используемые команды:
+
+a. Установите репозиторий Zabbix:
+
+wget https://repo.zabbix.com/zabbix/7.4/release/debian/pool/main/z/zabbix-release/zabbix-release_latest_7.4+debian12_all.deb
+dpkg -i zabbix-release_latest_7.4+debian12_all.deb
+apt update 
+
+б. Установите Zabbix сервер, веб-интерфейс и агент
+apt install zabbix-server-pgsql zabbix-frontend-php php8.2-pgsql zabbix-apache-conf zabbix-sql-scripts zabbix-agent
+
+в. Установка postgresql
+
+sudo apt install postgresql postgresql-contrib
+
+г. Создайте базу данных
 
 
+Установите и запустите сервер базы данных.
+
+Выполните следующие комманды на хосте, где будет распологаться база данных.
+# sudo -u postgres createuser --pwprompt zabbix
+# sudo -u postgres createdb -O zabbix zabbix
+
+На хосте Zabbix сервера импортируйте начальную схему и данные. Вам будет предложено ввести недавно созданный пароль.
+# zcat /usr/share/zabbix/sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psql zabbix 
 
 
+д. Настройте базу данных для Zabbix сервера
+
+Отредактируйте файл /etc/zabbix/zabbix_server.conf
+DBPassword=password  #(ввести свой пароль)
 
 
+ 
+e. Запустите процессы Zabbix сервера и агента
+
+Запустите процессы Zabbix сервера и агента и настройте их запуск при загрузке ОС.
+# systemctl restart zabbix-server zabbix-agent apache2
+# systemctl enable zabbix-server zabbix-agent apache2 
 
 
-
-
-
-
+Открыть страницу с zabbix http://host/zabbix 
 
 
 
