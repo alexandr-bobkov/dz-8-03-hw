@@ -93,5 +93,21 @@ e. Запустите процессы Zabbix сервера и агента
 
 ОТВЕТ:
 
+   Cкриншот раздела Configuration > Hosts:
 
-	
+   <img src = "img/_3.jpg" width = 100%>
+
+   Cкриншот лога zabbix agent:	
+
+   <img src = "img/5.jpg" width = 100%>
+   
+   Cкриншот раздела Monitoring > Latest data:
+
+   <img src = "img/_4.jpg" width = 100%>
+ 
+   Покажу еше панели (не стал менять ip для агента установленного на самом сервере zabbix):
+
+   <img src = "img/4.jpg" width = 100%>
+
+
+   Текст использованных команд
