@@ -1,56 +1,50 @@
-# Домашнее задание к занятию "Система мониторинга Zabbix" - 'Бобков Алекандр'
+# Домашнее задание к занятию "Система мониторинга Zabbix" - Бобков Александр
 
-
-
-Задание 1
+## Задание 1
 Установите Zabbix Server с веб-интерфейсом.
-Процесс выполнения
 
-    Выполняя ДЗ, сверяйтесь с процессом отражённым в записи лекции.
-    Установите PostgreSQL. Для установки достаточна та версия, что есть в системном репозитороии Debian 11.
-    Пользуясь конфигуратором команд с официального сайта, составьте набор команд для установки последней версии Zabbix с поддержкой PostgreSQL и Apache.
-    Выполните все необходимые команды для установки Zabbix Server и Zabbix Web Server.
+### Процесс выполнения
+1. Выполняя ДЗ, сверяйтесь с процессом отражённым в записи лекции.
+2. Установите PostgreSQL. Для установки достаточна та версия, что есть в системном репозитороии Debian 11.
+3. Пользуясь конфигуратором команд с официального сайта, составьте набор команд для установки последней версии Zabbix с поддержкой PostgreSQL и Apache.
+4. Выполните все необходимые команды для установки Zabbix Server и Zabbix Web Server.
 
-Требования к результатам
+### Требования к результатам
+* Прикрепите в файл README.md скриншот авторизации в админке.
+* Приложите в файл README.md текст использованных команд в GitHub.
 
-    Прикрепите в файл README.md скриншот авторизации в админке.
-    Приложите в файл README.md текст использованных команд в GitHub.
-
-
-ОТВЕТ:
+### ОТВЕТ:
 
 <img src = "img/1.jpg" width = 100%>
 <img src = "img/2.jpg" width = 100%>
 
+### Используемые команды:
 
-
-
-Используемые команды:
-
-a. Установите репозиторий Zabbix:
-
-wget https://repo.zabbix.com/zabbix/7.4/release/debian/pool/main/z/zabbix-release/zabbix-release_latest_7.4+debian12_all.deb
+**а. Установите репозиторий Zabbix:**
+```bash
+wget https://repo.zabbix.com
 dpkg -i zabbix-release_latest_7.4+debian12_all.deb
 apt update 
+
 
 б. Установите Zabbix сервер, веб-интерфейс и агент
 apt install zabbix-server-pgsql zabbix-frontend-php php8.2-pgsql zabbix-apache-conf zabbix-sql-scripts zabbix-agent
 
+
 в. Установка postgresql
 
-sudo apt install postgresql postgresql-contrib
+  sudo apt install postgresql postgresql-contrib
+
 
 г. Создайте базу данных
 
+Установите и запустите сервер базы данных. Выполните следующие комманды на хосте, где будет распологаться база данных.
 
-Установите и запустите сервер базы данных.
-
-Выполните следующие комманды на хосте, где будет распологаться база данных.
-# sudo -u postgres createuser --pwprompt zabbix
-# sudo -u postgres createdb -O zabbix zabbix
+sudo -u postgres createuser --pwprompt zabbix
+sudo -u postgres createdb -O zabbix zabbix
 
 На хосте Zabbix сервера импортируйте начальную схему и данные. Вам будет предложено ввести недавно созданный пароль.
-# zcat /usr/share/zabbix/sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psql zabbix 
+  zcat /usr/share/zabbix/sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psql zabbix 
 
 
 д. Настройте базу данных для Zabbix сервера
@@ -63,8 +57,9 @@ DBPassword=password  #(ввести свой пароль)
 e. Запустите процессы Zabbix сервера и агента
 
 Запустите процессы Zabbix сервера и агента и настройте их запуск при загрузке ОС.
-# systemctl restart zabbix-server zabbix-agent apache2
-# systemctl enable zabbix-server zabbix-agent apache2 
+ 
+ systemctl restart zabbix-server zabbix-agent apache2
+ systemctl enable zabbix-server zabbix-agent apache2 
 
 
 Открыть страницу с zabbix http://host/zabbix 
@@ -112,9 +107,10 @@ e. Запустите процессы Zabbix сервера и агента
 
    Текст использованных команд
 
-	1. Устанавливаем сам Агент:
+	**1. Устанавливаем сам Агент:**
 
-	  apt update && apt install zabbix-agent -y
+	```bash
+	apt update && apt install zabbix-agent -y
 
 	2. Правим конфигурационный файл: nano /etc/zabbix/zabbix_agentd.conf
 
