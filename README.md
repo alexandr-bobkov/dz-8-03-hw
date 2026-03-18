@@ -60,7 +60,7 @@ DBPassword=password  #(ввести свой пароль)
  
 **e. Запустите процессы Zabbix сервера и агента**
 
-* **88Запустите процессы Zabbix сервера и агента и настройте их запуск при загрузке ОС.**
+* **Запустите процессы Zabbix сервера и агента и настройте их запуск при загрузке ОС.**
 ```bash
 systemctl restart zabbix-server zabbix-agent apache2
 systemctl enable zabbix-server zabbix-agent apache2 
@@ -112,7 +112,7 @@ systemctl enable zabbix-server zabbix-agent apache2
 
 **Текст использованных команд**
 
-1. Устанавливаем сам Агент:
+1. **Устанавливаем сам Агент:**
 
 ```bash
 apt update && apt install zabbix-agent -y
@@ -123,13 +123,13 @@ apt update && apt install zabbix-agent -y
 * **Hostname=zabbixclient** — это имя должно точно совпадать с полем "Host name" в веб-интерфейсе Zabbix.
 * **Server=10.129.0.5** — для пассивных проверок (чтобы сервер мог опрашивать агент).
 
-3. Произодим рестарт сервиса Агента:
+3. **Произодим рестарт сервиса Агента:**
 
 ```bash
 systemctl restart zabbix-agent
 ```
 
-4. Добавляем сервис в автозагрузку:
+4. **Добавляем сервис в автозагрузку:**
 
 ```bash
 systemctl enable zabbix-agent
@@ -142,3 +142,9 @@ systemctl enable zabbix-agent
 информацию от Агента. Пришлось изменить правила iptables.**
 
 
+<details>
+<summary>Нажми, чтобы увидеть полный лог агента</summary>
+
+```bash
+2023/10/27 12:00:01.123 [Z3001] connection to database failed
+... еще 100 строк лога ...
