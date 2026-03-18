@@ -26,7 +26,7 @@
 wget https://repo.zabbix.com
 dpkg -i zabbix-release_latest_7.4+debian12_all.deb
 apt update 
-
+```
 
 б. Установите Zabbix сервер, веб-интерфейс и агент
 apt install zabbix-server-pgsql zabbix-frontend-php php8.2-pgsql zabbix-apache-conf zabbix-sql-scripts zabbix-agent
