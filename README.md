@@ -114,19 +114,23 @@ e. Запустите процессы Zabbix сервера и агента
 ```bash
 apt update && apt install zabbix-agent -y
 ```
-2. Правим конфигурационный файл: nano /etc/zabbix/zabbix_agentd.conf
+2. **Правим конфигурационный файл:** `nano /etc/zabbix/zabbix_agentd.conf`
 
-ServerActive=10.129.0.5 — IP сервера (куда агент сам шлет данные);
-Hostname=zabbixclient — это имя должно точно совпадать с полем "Host name" в веб-интерфейсе Zabbix.
-Server=10.129.0.5 — для пассивных проверок (чтобы сервер мог опрашивать агент).
+**ServerActive=10.129.0.5** — IP сервера (куда агент сам шлет данные);
+**Hostname=zabbixclient** — это имя должно точно совпадать с полем "Host name" в веб-интерфейсе Zabbix.
+**Server=10.129.0.5** — для пассивных проверок (чтобы сервер мог опрашивать агент).
 
 3. Произодим рестарт сервиса Агента:
 
+```bash
 systemctl restart zabbix-agent
+```
 
 4. Добавляем сервис в автозагрузку:
 
+```bash
 systemctl enable zabbix-agent
+```
 
 **Столкнулся с проблемой, т.к. виртульная машина развернута в YandexCloud, на
 сервере Zabbix были включены правила iptables, из за чего не проходили пакеты 
