@@ -18,7 +18,6 @@
 
 <img src="img/1.jpg" width = 100%>
 <img src="img/2.jpg" width = 100%>
-<img src="img/_3.jpg" width = 100%>
 
  Используемые команды:
 
@@ -91,6 +90,7 @@ e. Запустите процессы Zabbix сервера и агента
 ОТВЕТ:
 
   **Cкриншот раздела Configuration > Hosts:**
+<img src="img/_3.jpg" width = 100%>
 <img src="img/_3.jpg" width="100%">
 
   ** Cкриншот лога zabbix agent:**	
