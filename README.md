@@ -36,7 +36,7 @@ apt install zabbix-server-pgsql zabbix-frontend-php php8.2-pgsql zabbix-apache-c
 ```
 
 **в. Установка postgresql**
-```sql
+```bash
 sudo apt install postgresql postgresql-contrib -y
 ```
 
@@ -121,10 +121,11 @@ apt update && apt install zabbix-agent -y
 ```
 2. **Правим конфигурационный файл:** `nano /etc/zabbix/zabbix_agentd.conf`
 
+```ini
 * **ServerActive=10.129.0.5** — IP сервера (куда агент сам шлет данные);
 * **Hostname=zabbixclient** — это имя должно точно совпадать с полем "Host name" в веб-интерфейсе Zabbix.
 * **Server=10.129.0.5** — для пассивных проверок (чтобы сервер мог опрашивать агент).
-
+```ini
 3. **Произодим рестарт сервиса Агента:**
 
 ```bash
@@ -144,8 +145,3 @@ systemctl enable zabbix-agent
 информацию от Агента. Пришлось изменить правила iptables.**
 
 
-```ini
-Server=10.129.0.5
-Hostname=zabbix-client-01
-ListenPort=10050
-```
