@@ -15,9 +15,11 @@
 * Приложите в файл README.md текст использованных команд в GitHub.
 
 ## ОТВЕТ:
-
+<details>
+<summary>Нажми, чтобы увидеть скриншот установки</summary>
 <img src="img/1.jpg" width = 100%>
 <img src="img/2.jpg" width = 100%>
+</details>
 
 * **Используемые команды:**
 
