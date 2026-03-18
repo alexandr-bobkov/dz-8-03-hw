@@ -144,14 +144,8 @@ systemctl enable zabbix-agent
 информацию от Агента. Пришлось изменить правила iptables.**
 
 
-<details>
-<summary>Нажми, чтобы увидеть полный лог агента</summary>
-
-```bash
-2023/10/27 12:00:01.123 [Z3001] connection to database failed
-... еще 100 строк лога ...
-```
-
+```ini
 Server=10.129.0.5
 Hostname=zabbix-client-01
 ListenPort=10050
+```
