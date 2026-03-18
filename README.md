@@ -37,7 +37,7 @@ apt install zabbix-server-pgsql zabbix-frontend-php php8.2-pgsql zabbix-apache-c
 
 **в. Установка postgresql**
 ```bash
-sudo apt install postgresql postgresql-contrib
+sudo apt install postgresql postgresql-contrib -y
 ```
 
 **г. Создайте базу данных**
