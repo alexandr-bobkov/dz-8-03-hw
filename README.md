@@ -150,3 +150,8 @@ systemctl enable zabbix-agent
 ```bash
 2023/10/27 12:00:01.123 [Z3001] connection to database failed
 ... еще 100 строк лога ...
+```
+
+Server=10.129.0.5
+Hostname=zabbix-client-01
+ListenPort=10050
