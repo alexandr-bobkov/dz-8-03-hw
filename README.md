@@ -19,7 +19,7 @@
 <img src="img/1.jpg" width = 100%>
 <img src="img/2.jpg" width = 100%>
 
- Используемые команды:
+* **Используемые команды:**
 
 **а. Установите репозиторий Zabbix:**
 ```bash
@@ -28,47 +28,50 @@ dpkg -i zabbix-release_latest_7.4+debian12_all.deb
 apt update 
 ```
 
-б. Установите Zabbix сервер, веб-интерфейс и агент
+**б. Установите Zabbix сервер, веб-интерфейс и агент**
+```bash
 apt install zabbix-server-pgsql zabbix-frontend-php php8.2-pgsql zabbix-apache-conf zabbix-sql-scripts zabbix-agent
+```
 
+**в. Установка postgresql**
+```bash
+sudo apt install postgresql postgresql-contrib
+```
 
-в. Установка postgresql
+**г. Создайте базу данных**
 
-  sudo apt install postgresql postgresql-contrib
-
-
-г. Создайте базу данных
-
-Установите и запустите сервер базы данных. Выполните следующие комманды на хосте, где будет распологаться база данных.
-
+* **Установите и запустите сервер базы данных. Выполните следующие комманды на хосте, где будет распологаться база данных.**
+```bash
 sudo -u postgres createuser --pwprompt zabbix
 sudo -u postgres createdb -O zabbix zabbix
+```
+* **На хосте Zabbix сервера импортируйте начальную схему и данные. Вам будет предложено ввести недавно созданный пароль.**
+```bash  
+zcat /usr/share/zabbix/sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psql zabbix 
+```
 
-На хосте Zabbix сервера импортируйте начальную схему и данные. Вам будет предложено ввести недавно созданный пароль.
-  zcat /usr/share/zabbix/sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psql zabbix 
+**д. Настройте базу данных для Zabbix сервера**
 
+* **Отредактируйте файл /etc/zabbix/zabbix_server.conf**
 
-д. Настройте базу данных для Zabbix сервера
-
-Отредактируйте файл /etc/zabbix/zabbix_server.conf
 DBPassword=password  #(ввести свой пароль)
 
 
  
-e. Запустите процессы Zabbix сервера и агента
+**e. Запустите процессы Zabbix сервера и агента**
 
-Запустите процессы Zabbix сервера и агента и настройте их запуск при загрузке ОС.
- 
- systemctl restart zabbix-server zabbix-agent apache2
- systemctl enable zabbix-server zabbix-agent apache2 
+* **88Запустите процессы Zabbix сервера и агента и настройте их запуск при загрузке ОС.**
+```bash
+systemctl restart zabbix-server zabbix-agent apache2
+systemctl enable zabbix-server zabbix-agent apache2 
+```
+
+***Открыть страницу с zabbix http://host/zabbix*** 
+
+**################################################################################################**
 
 
-Открыть страницу с zabbix http://host/zabbix 
-
-################################################################################################
-
-
-Задание 2
+###Задание 2
 
 Установите Zabbix Agent на два хоста.
 Процесс выполнения
@@ -87,7 +90,7 @@ e. Запустите процессы Zabbix сервера и агента
     Приложите в файл README.md текст использованных команд в GitHub
 
 
-ОТВЕТ:
+##ОТВЕТ:
 
 **Cкриншот раздела Configuration > Hosts:**
 
